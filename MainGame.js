@@ -1,7 +1,7 @@
 import Card from "./Card.js";
 import Game from "./lib/Game.js";
 
-export default class Main extends Game {
+export default class MainGame extends Game {
     constructor() {
         super(240, 320);
     }
