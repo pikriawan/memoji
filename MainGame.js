@@ -7,6 +7,7 @@ export default class MainGame extends Game {
     }
 
     preload() {
+        this.loadImage("back", "images/back.png");
         this.loadImage("card-1", "images/card-1.png");
     }
 
@@ -19,9 +20,16 @@ export default class MainGame extends Game {
             this.width * 0.5 - cardWidth * 0.5,
             this.height * 0.5 - cardHeight * 0.5,
             cardWidth,
-            cardHeight
+            cardHeight,
+            {
+                image: "back",
+                x: 0,
+                y: 0,
+                width: 240,
+                height: 360
+            }
         );
 
-        this.addGameObject(card);
+        this.add(card);
     }
 }
