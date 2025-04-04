@@ -1,12 +1,27 @@
 import MainGame from "./MainGame.js";
 
-document.documentElement.style.width = "100%";
-document.documentElement.style.height = "100%";
-document.body.style.width = "100%";
-document.body.style.height = "100%";
-document.body.style.margin = "0";
-document.body.style.display = "flex";
-document.body.style.justifyContent = "center";
-document.body.style.alignItems = "center";
+const play = document.createElement("button");
+play.textContent = "Mainkan Memoji";
+document.body.append(play);
 
-new MainGame(320, 320, 4, 4);
+let game;
+
+play.addEventListener("click", () => {
+    if (game === undefined) {
+        game = new MainGame(screen.height, screen.width, 3, 8);
+    }
+
+    addEventListener("fullscreenchange", () => {
+        if (document.fullscreenElement) {
+            game.resume();
+            game.canvas.style.display = "block";
+            screen.orientation.lock("landscape");
+        } else {
+            game.pause();
+            game.canvas.style.display = "none";
+            screen.orientation.unlock();
+        }
+    });
+
+    game.canvas.requestFullscreen();
+});

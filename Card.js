@@ -21,7 +21,7 @@ export default class Card extends Sprite {
         this.isOpen = false;
         this.isClosing = false;
         this.closeCounter = 0;
-        this.closeDuration = 120;
+        this.closeDuration = 30;
 
         let frames = [];
 
@@ -52,19 +52,36 @@ export default class Card extends Sprite {
     }
 
     onClick() {
-        if (this.isAnimating) {
-            return;
-        }
-
-        if (this.isOpen) {
-            this.close();
-        } else {
+        if (this.game.pendingCard === null) {
+            this.game.pendingCard = this;
             this.open();
+
+            for (const card of this.game.cards) {
+                if (card.isClosing) {
+                    card.isClosing = false;
+                    card.closeCounter = 0;
+                    card.close();
+                    console.log(card);
+                }
+            }
+
+        } else {
+            if (this.image === this.game.pendingCard.image) {
+                this.game.pendingCard = null;
+                this.open();
+            } else {
+                this.game.pendingCard.closeLazy();
+                this.game.pendingCard = null;
+                this.open();
+                this.closeLazy();
+            }
         }
     }
 
     update() {
         super.update();
+
+        this.isDisabled = this.isAnimating || this.isOpen;
 
         if (this.isClosing) {
             this.closeCounter++;
@@ -72,6 +89,7 @@ export default class Card extends Sprite {
 
         if (this.closeCounter >= this.closeDuration) {
             this.isClosing = false;
+            this.closeCounter = 0;
             this.close();
         }
     }

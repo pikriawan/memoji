@@ -5,8 +5,8 @@ export default class MainGame extends Game {
     constructor(width, height, row, column) {
         super(width, height);
 
-        this.cardWidth = 40;
-        this.cardHeight = 60;
+        this.cardWidth = 70;
+        this.cardHeight = 105;
         this.gap = 8;
         this.row = row;
         this.column = column;
@@ -14,6 +14,9 @@ export default class MainGame extends Game {
         this.totalCardHeight = this.cardHeight * this.row + this.gap * (this.row - 1);
         this.cardLeft = this.width * 0.5 - this.totalCardWidth * 0.5;
         this.cardTop = this.height * 0.5 - this.totalCardHeight * 0.5;
+
+        this.cards = [];
+        this.pendingCard = null;
 
         this.canvas.style.backgroundColor = "#F6F6F6";
     }
@@ -27,9 +30,9 @@ export default class MainGame extends Game {
     }
 
     create() {
-        const cards = this.generateRandomCards(this.row * this.column);
+        this.cards = this.generateRandomCards(this.row * this.column);
 
-        for (const card of cards) {
+        for (const card of this.cards) {
             this.add(card);
         }
     }
