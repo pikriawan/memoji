@@ -9,4 +9,4 @@ document.body.style.display = "flex";
 document.body.style.justifyContent = "center";
 document.body.style.alignItems = "center";
 
-new MainGame();
+new MainGame(320, 320, 4, 4);

@@ -1,21 +1,19 @@
 import Card from "./Card.js";
 import Game from "./lib/Game.js";
 
-const gameWidth = 320;
-const gameHeight = 240;
-const cardWidth = 40;
-const cardHeight = cardWidth * 1.5;
-const gap = 8;
-const row = 2;
-const column = 2;
-const totalCardWidth = cardWidth * column + gap * (column - 1);
-const totalCardHeight = cardHeight * row + gap * (row - 1);
-const top = gameWidth * 0.5 - totalCardWidth * 0.5;
-const left = gameHeight * 0.5 - totalCardHeight * 0.5;
-
 export default class MainGame extends Game {
-    constructor() {
-        super(gameWidth, gameHeight);
+    constructor(width, height, row, column) {
+        super(width, height);
+
+        this.cardWidth = 40;
+        this.cardHeight = 60;
+        this.gap = 8;
+        this.row = row;
+        this.column = column;
+        this.totalCardWidth = this.cardWidth * this.column + this.gap * (this.column - 1);
+        this.totalCardHeight = this.cardHeight * this.row + this.gap * (this.row - 1);
+        this.cardLeft = this.width * 0.5 - this.totalCardWidth * 0.5;
+        this.cardTop = this.height * 0.5 - this.totalCardHeight * 0.5;
 
         this.canvas.style.backgroundColor = "#F6F6F6";
     }
@@ -29,7 +27,7 @@ export default class MainGame extends Game {
     }
 
     create() {
-        const cards = this.generateRandomCards(row * column);
+        const cards = this.generateRandomCards(this.row * this.column);
 
         for (const card of cards) {
             this.add(card);
@@ -79,11 +77,11 @@ export default class MainGame extends Game {
 
         let i = 0;
 
-        for (let j = 0; j < column; j++) {
-            for (let k = 0; k < row; k++) {
-                const x = top + j * cardWidth + j * gap;
-                const y = left + k * cardHeight + k * gap;
-                cards.push(new Card(this, x, y, cardWidth, cardHeight, "card-" + cardsIndex[i]));
+        for (let j = 0; j < this.column; j++) {
+            for (let k = 0; k < this.row; k++) {
+                const x = this.cardLeft + j * this.cardWidth + j * this.gap;
+                const y = this.cardTop + k * this.cardHeight + k * this.gap;
+                cards.push(new Card(this, x, y, this.cardWidth, this.cardHeight, "card-" + cardsIndex[i]));
                 i++;
             }
         }
