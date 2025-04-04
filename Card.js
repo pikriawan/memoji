@@ -9,7 +9,7 @@ export default class Card extends Sprite {
             width,
             height,
             {
-                image: "back",
+                image: "card-back",
                 x: 0,
                 y: 0,
                 width: 240,
@@ -24,11 +24,10 @@ export default class Card extends Sprite {
         this.closeDuration = 120;
 
         let frames = [];
-        const framePerImage = 7;
 
-        for (let i = 0; i < framePerImage; i++) {
+        for (let i = 0; i < 7; i++) {
             frames.push({
-                image: "back",
+                image: "card-back",
                 x: i * 240,
                 y: 0,
                 width: 240,
@@ -37,10 +36,8 @@ export default class Card extends Sprite {
             });
         }
 
-        const frontFrames = [];
-
-        for (let i = 0; i < framePerImage; i++) {
-            frontFrames.push({
+        for (let i = 7 - 1; i >= 0; i--) {
+            frames.push({
                 image,
                 x: i * 240,
                 y: 0,
@@ -49,9 +46,6 @@ export default class Card extends Sprite {
                 duration: 1
             });
         }
-
-        frontFrames.reverse();
-        frames = frames.concat(frontFrames);
 
         this.animations.set("open", frames);
         this.animations.set("close", frames.toReversed());
