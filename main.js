@@ -8,7 +8,9 @@ let game;
 
 play.addEventListener("click", () => {
     if (game === undefined) {
-        game = new MainGame(screen.height, screen.width, 3, 8);
+        const width = Math.max(screen.width, screen.height);
+        const height = Math.min(screen.width, screen.height);
+        game = new MainGame(width, height, 3, 8);
     }
 
     addEventListener("fullscreenchange", () => {
