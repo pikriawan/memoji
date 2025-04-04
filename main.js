@@ -9,4 +9,4 @@ document.body.style.display = "flex";
 document.body.style.justifyContent = "center";
 document.body.style.alignItems = "center";
 
-new MainGame().canvas.style.backgroundColor = "white";
+new MainGame();

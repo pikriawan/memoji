@@ -23,9 +23,10 @@ export default class Card extends Sprite {
         this.closeCounter = 0;
         this.closeDuration = 120;
 
-        const frames = [];
+        let frames = [];
+        const framePerImage = 7;
 
-        for (let i = 0; i < 15; i++) {
+        for (let i = 0; i < framePerImage; i++) {
             frames.push({
                 image: "back",
                 x: i * 240,
@@ -36,8 +37,10 @@ export default class Card extends Sprite {
             });
         }
 
-        for (let i = 14; i > -1; i--) {
-            frames.push({
+        const frontFrames = [];
+
+        for (let i = 0; i < framePerImage; i++) {
+            frontFrames.push({
                 image,
                 x: i * 240,
                 y: 0,
@@ -47,13 +50,23 @@ export default class Card extends Sprite {
             });
         }
 
+        frontFrames.reverse();
+        frames = frames.concat(frontFrames);
+
         this.animations.set("open", frames);
         this.animations.set("close", frames.toReversed());
     }
 
     onClick() {
-        this.isDisabled = true;
-        this.open();
+        if (this.isAnimating) {
+            return;
+        }
+
+        if (this.isOpen) {
+            this.close();
+        } else {
+            this.open();
+        }
     }
 
     update() {
