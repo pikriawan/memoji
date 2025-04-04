@@ -1,35 +1,36 @@
 import Card from "./Card.js";
+import CardValue from "./CardValue.js";
 import Game from "./lib/Game.js";
 
 export default class MainGame extends Game {
     constructor() {
-        super(240, 320);
+        super(496, 288);
     }
 
     preload() {
         this.loadImage("back", "images/back.png");
         this.loadImage("card-1", "images/card-1.png");
+        this.loadImage("card-2", "images/card-2.png");
+        this.loadImage("card-3", "images/card-3.png");
+        this.loadImage("card-4", "images/card-4.png");
+        this.loadImage("card-5", "images/card-5.png");
     }
 
     create() {
-        const cardWidth = 80;
-        const cardHeight = 120;
+        const margin = 16;
+        const gap = 16;
+        const cards = [];
 
-        const card = new Card(
-            this,
-            this.width * 0.5 - cardWidth * 0.5,
-            this.height * 0.5 - cardHeight * 0.5,
-            cardWidth,
-            cardHeight,
-            {
-                image: "back",
-                x: 0,
-                y: 0,
-                width: 240,
-                height: 360
+        for (let i = 0; i < 5; i++) {
+            for (let j = 0; j < 2; j++) {
+                const x = margin + i * (gap + 80);
+                const y = margin + j * (gap + 120);
+                cards.push(new Card(this, x, y, CardValue.Card2));
             }
-        );
+        }
 
-        this.add(card);
+        for (const card of cards) {
+            this.add(card);
+        }
     }
 }

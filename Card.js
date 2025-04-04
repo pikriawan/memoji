@@ -1,10 +1,27 @@
 import Sprite from "./lib/Sprite.js";
 
 export default class Card extends Sprite {
-    constructor(game, x, y, width, height, frame) {
-        super(game, x, y, width, height, frame);
+    constructor(game, x, y, value) {
+        super(
+            game,
+            x,
+            y,
+            80,
+            120,
+            {
+                image: "back",
+                x: 0,
+                y: 0,
+                width: 240,
+                height: 360
+            }
+        );
 
+        this.value = value;
         this.isOpen = false;
+        this.isClosing = false;
+        this.closeCounter = 0;
+        this.closeDuration = 120;
 
         const frames = [];
 
@@ -21,7 +38,7 @@ export default class Card extends Sprite {
 
         for (let i = 14; i > -1; i--) {
             frames.push({
-                image: "card-1",
+                image: value.IMAGE,
                 x: i * 240,
                 y: 0,
                 width: 240,
@@ -34,17 +51,35 @@ export default class Card extends Sprite {
         this.animations.set("close", frames.toReversed());
     }
 
-    onClick(event) {
-        if (this.isAnimating) {
-            return;
+    onClick() {
+        this.isDisabled = true;
+        this.open();
+    }
+
+    update() {
+        super.update();
+
+        if (this.isClosing) {
+            this.closeCounter++;
         }
 
-        if (this.isOpen) {
-            this.isOpen = false;
-            this.play("close");
-        } else {
-            this.isOpen = true;
-            this.play("open");
+        if (this.closeCounter >= this.closeDuration) {
+            this.isClosing = false;
+            this.close();
         }
+    }
+
+    open() {
+        this.isOpen = true;
+        this.play("open");
+    }
+
+    close() {
+        this.isOpen = false;
+        this.play("close");
+    }
+
+    closeLazy() {
+        this.isClosing = true;
     }
 }
