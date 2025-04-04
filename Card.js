@@ -22,6 +22,7 @@ export default class Card extends Sprite {
         this.isClosing = false;
         this.closeCounter = 0;
         this.closeDuration = 30;
+        this.willClose = false;
 
         let frames = [];
 
@@ -60,8 +61,7 @@ export default class Card extends Sprite {
                 if (card.isClosing) {
                     card.isClosing = false;
                     card.closeCounter = 0;
-                    card.close();
-                    console.log(card);
+                    card.willClose = true;
                 }
             }
 
@@ -90,6 +90,11 @@ export default class Card extends Sprite {
         if (this.closeCounter >= this.closeDuration) {
             this.isClosing = false;
             this.closeCounter = 0;
+            this.close();
+        }
+
+        if (!this.isAnimating && this.willClose) {
+            this.willClose = false;
             this.close();
         }
     }
