@@ -1,13 +1,13 @@
 import Sprite from "./lib/Sprite.js";
 
 export default class Card extends Sprite {
-    constructor(game, x, y, value) {
+    constructor(game, x, y, width, height, image) {
         super(
             game,
             x,
             y,
-            80,
-            120,
+            width,
+            height,
             {
                 image: "back",
                 x: 0,
@@ -17,7 +17,7 @@ export default class Card extends Sprite {
             }
         );
 
-        this.value = value;
+        this.image = image;
         this.isOpen = false;
         this.isClosing = false;
         this.closeCounter = 0;
@@ -38,7 +38,7 @@ export default class Card extends Sprite {
 
         for (let i = 14; i > -1; i--) {
             frames.push({
-                image: value.IMAGE,
+                image,
                 x: i * 240,
                 y: 0,
                 width: 240,

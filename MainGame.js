@@ -1,31 +1,36 @@
 import Card from "./Card.js";
-import CardValue from "./CardValue.js";
 import Game from "./lib/Game.js";
+
+const cardWidth = 40;
+const cardHeight = cardWidth * 1.5;
+const margin = 16;
+const gap = 16;
+const row = 2;
+const column = 4;
+const gameWidth = margin * 2 + cardWidth * column + gap * (column - 1);
+const gameHeight = margin * 2 + cardHeight * row + gap * (row - 1);
 
 export default class MainGame extends Game {
     constructor() {
-        super(496, 288);
+        super(gameWidth, gameHeight);
     }
 
     preload() {
         this.loadImage("back", "images/back.png");
-        this.loadImage("card-1", "images/card-1.png");
-        this.loadImage("card-2", "images/card-2.png");
-        this.loadImage("card-3", "images/card-3.png");
-        this.loadImage("card-4", "images/card-4.png");
-        this.loadImage("card-5", "images/card-5.png");
+
+        for (let i = 1; i <= 30; i++) {
+            this.loadImage("card-" + i, "images/card-" + i + ".png");
+        }
     }
 
     create() {
-        const margin = 16;
-        const gap = 16;
         const cards = [];
 
-        for (let i = 0; i < 5; i++) {
-            for (let j = 0; j < 2; j++) {
-                const x = margin + i * (gap + 80);
-                const y = margin + j * (gap + 120);
-                cards.push(new Card(this, x, y, CardValue.Card2));
+        for (let i = 0; i < column; i++) {
+            for (let j = 0; j < row; j++) {
+                const x = margin + i * (gap + cardWidth);
+                const y = margin + j * (gap + cardHeight);
+                cards.push(new Card(this, x, y, cardWidth, cardHeight, "card-" + (Math.floor(Math.random() * 30) + 1)));
             }
         }
 
