@@ -49,7 +49,10 @@ export default class Card extends Sprite {
         }
 
         this.animations.set("open", frames);
-        this.animations.set("close", frames.toReversed());
+
+        const reversedFrames = frames.slice();
+        reversedFrames.reverse();
+        this.animations.set("close", reversedFrames);
     }
 
     onClick() {
