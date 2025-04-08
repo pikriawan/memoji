@@ -1,13 +1,7 @@
-import Frame from "./lib/Frame.js";
-import Scene from "./lib/Scene.js";
-import Sprite from "./lib/Sprite.js";
+import Frame from "../lib/Frame";
+import Sprite from "../lib/Sprite";
 
-function reverse(array) {
-    const result = array.slice();
-    return result.reverse();
-}
-
-class Card extends Sprite {
+export default class Card extends Sprite {
     constructor(scene, x, y, width, height) {
         super(scene, new Frame("card-back", 0, 0, 240, 360), x, y, width, height);
 
@@ -28,7 +22,7 @@ class Card extends Sprite {
         }
 
         this.animations.set("open", frames);
-        this.animations.set("close", reverse(frames));
+        this.animations.set("close", frames.toReversed());
 
         this.on("click", () => {
             if (this.isDisabled) {
@@ -74,12 +68,5 @@ class Card extends Sprite {
 
     closeLazy() {
         this.isClosing = true;
-    }
-}
-
-export default class MainScene extends Scene {
-    create() {
-        const card = new Card(this, 16, 16, 80, 120);
-        this.addObject(card);
     }
 }
