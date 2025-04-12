@@ -5,6 +5,12 @@ export default class Memoji extends Game {
         this.loadImage("background", "images/background.png");
         this.loadImage("logo", "images/logo.png");
         this.loadImage("loading", "images/loading.png");
+        this.loadImage("button-easy", "images/button-easy.png");
+        this.loadImage("button-medium", "images/button-medium.png");
+        this.loadImage("button-hard", "images/button-hard.png");
+        this.loadImage("button-back", "images/button-back.png");
+        this.loadImage("arrows", "images/arrows.png");
+        this.loadImage("numbers", "images/numbers.png");
         this.loadImage("card-back", "images/card-back.png");
 
         for (let i = 1; i <= 30; i++) {

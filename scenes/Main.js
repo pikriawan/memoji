@@ -1,9 +1,15 @@
-import Card from "../game-objects/Card";
+import MoveCounter from "../game-objects/MoveCounter";
 import Frame from "../lib/Frame";
 import Picture from "../lib/Picture";
 import Scene from "../lib/Scene";
 
 export default class MainScene extends Scene {
+    constructor(game) {
+        super(game);
+
+        this.moveCounter = null;
+    }
+
     create() {
         const background = new Picture(
             this,
@@ -15,13 +21,6 @@ export default class MainScene extends Scene {
         );
         this.addObject(background);
 
-        const card = new Card(
-            this,
-            this.game.width * 0.5 - 40,
-            this.game.height * 0.5 - 60,
-            80,
-            120
-        );
-        this.addObject(card);
+        this.moveCounter = new MoveCounter(this, 10, 0, 0);
     }
 }
