@@ -67,7 +67,6 @@ export default class Card extends Sprite {
                     card.willClose = true;
                 }
             }
-
         } else {
             if (this.image === this.game.pendingCard.image) {
                 this.game.pendingCard = null;
