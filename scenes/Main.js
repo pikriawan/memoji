@@ -3,7 +3,9 @@ import MoveCounter from "../game-objects/MoveCounter";
 import Frame from "../lib/Frame";
 import Picture from "../lib/Picture";
 import Scene from "../lib/Scene";
+import Lose from "./Lose";
 import Menu from "./Menu";
+import Win from "./Win";
 
 export default class Main extends Scene {
     static DIFFICULTY_EASY = 0;
@@ -99,10 +101,10 @@ export default class Main extends Scene {
         if (this.redirectCounter === this.redirectDelay) {
             if (this.status == Main.STATUS_LOSE) {
                 this.game.playSound("lose");
-                this.game.setScene(new Menu(this.game));
+                this.game.setScene(new Lose(this.game));
             } else {
                 this.game.playSound("win");
-                this.game.setScene(new Menu(this.game));
+                this.game.setScene(new Win(this.game));
             }
         }
     }

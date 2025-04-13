@@ -19,7 +19,7 @@ play.addEventListener("click", () => {
         if (document.fullscreenElement) {
             game.resume();
             game.canvas.style.display = "block";
-            screen.orientation.lock("landscape");
+            screen.orientation.lock("landscape").catch(() => {});
         } else {
             game.pause();
             game.canvas.style.display = "none";
