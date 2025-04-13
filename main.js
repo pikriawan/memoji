@@ -1,4 +1,5 @@
-import MainGame from "./MainGame.js";
+import Memoji from "./Memoji";
+import Loading from "./scenes/Loading";
 
 const play = document.createElement("button");
 play.textContent = "Mainkan Memoji";
@@ -10,14 +11,15 @@ play.addEventListener("click", () => {
     if (game === undefined) {
         const width = Math.max(screen.width, screen.height);
         const height = Math.min(screen.width, screen.height);
-        game = new MainGame(width, height, 3, 8);
+        game = new Memoji(width, height);
+        game.setScene(new Loading(game));
     }
 
     addEventListener("fullscreenchange", () => {
         if (document.fullscreenElement) {
             game.resume();
             game.canvas.style.display = "block";
-            screen.orientation.lock("landscape");
+            screen.orientation.lock("landscape").catch(() => {});
         } else {
             game.pause();
             game.canvas.style.display = "none";
