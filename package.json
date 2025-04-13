@@ -1,7 +1,7 @@
 {
     "scripts": {
         "dev": "vite",
-        "build": "vite build && cp images sounds dist -r",
+        "build": "vite build",
         "preview": "vite preview"
     },
     "devDependencies": {
