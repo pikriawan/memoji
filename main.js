@@ -1,14 +1,31 @@
 import Memoji from "./Memoji";
 import Loading from "./scenes/Loading";
 
-document.documentElement.style.width = "100%";
-document.documentElement.style.height = "100%";
-document.body.style.width = "100%";
-document.body.style.height = "100%";
-document.body.style.margin = "0";
-document.body.style.display = "flex";
-document.body.style.justifyContent = "center";
-document.body.style.alignItems = "center";
+const play = document.createElement("button");
+play.textContent = "Mainkan Memoji";
+document.body.append(play);
 
-const game = new Memoji(600, 400);
-game.setScene(new Loading(game));
+let game;
+
+play.addEventListener("click", () => {
+    if (game === undefined) {
+        const width = Math.max(screen.width, screen.height);
+        const height = Math.min(screen.width, screen.height);
+        game = new Memoji(width, height);
+        game.setScene(new Loading(game));
+    }
+
+    addEventListener("fullscreenchange", () => {
+        if (document.fullscreenElement) {
+            game.resume();
+            game.canvas.style.display = "block";
+            screen.orientation.lock("landscape");
+        } else {
+            game.pause();
+            game.canvas.style.display = "none";
+            screen.orientation.unlock();
+        }
+    });
+
+    game.canvas.requestFullscreen();
+});
