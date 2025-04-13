@@ -13,6 +13,11 @@ export default class Memoji extends Game {
         this.loadImage("numbers", "images/numbers.png");
         this.loadImage("card-back", "images/card-back.png");
 
+        this.loadSound("click", "sounds/click.wav");
+        this.loadSound("flip", "sounds/flip.wav");
+        this.loadSound("lose", "sounds/lose.wav");
+        this.loadSound("win", "sounds/win.wav");
+
         for (let i = 1; i <= 30; i++) {
             this.loadImage("card-" + i, "images/card-" + i + ".png");
         }

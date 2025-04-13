@@ -47,34 +47,38 @@ export default class MoveCounter extends GameObject {
     }
 
     draw() {
-        const arrowsImage = this.scene.game.images.get(this.arrowsFrame.imageKey);
+        const arrowsImage = this.scene.game.assets.get(this.arrowsFrame.imageKey);
 
-        this.scene.game.context.drawImage(
-            arrowsImage,
-            this.arrowsFrame.x,
-            this.arrowsFrame.y,
-            this.arrowsFrame.width,
-            this.arrowsFrame.height,
-            this.x,
-            this.y + (this.height - this.arrowsHeight) * 0.5,
-            this.arrowsWidth,
-            this.arrowsHeight
-        );
+        if (arrowsImage instanceof Image) {
+            this.scene.game.context.drawImage(
+                arrowsImage,
+                this.arrowsFrame.x,
+                this.arrowsFrame.y,
+                this.arrowsFrame.width,
+                this.arrowsFrame.height,
+                this.x,
+                this.y + (this.height - this.arrowsHeight) * 0.5,
+                this.arrowsWidth,
+                this.arrowsHeight
+            );
+        }
 
         for (let i = 0; i < this.numberFrames.length; i++) {
-            const numbersImage = this.scene.game.images.get(this.numberFrames[i].imageKey);
+            const numbersImage = this.scene.game.assets.get(this.numberFrames[i].imageKey);
 
-            this.scene.game.context.drawImage(
-                numbersImage,
-                this.numberFrames[i].x,
-                this.numberFrames[i].y,
-                this.numberFrames[i].width,
-                this.numberFrames[i].height,
-                this.x + this.arrowsWidth + this.arrowsGapX + this.numberWidth * i,
-                this.y,
-                this.numberWidth,
-                this.numbersHeight
-            );
+            if (arrowsImage instanceof Image) {
+                this.scene.game.context.drawImage(
+                    numbersImage,
+                    this.numberFrames[i].x,
+                    this.numberFrames[i].y,
+                    this.numberFrames[i].width,
+                    this.numberFrames[i].height,
+                    this.x + this.arrowsWidth + this.arrowsGapX + this.numberWidth * i,
+                    this.y,
+                    this.numberWidth,
+                    this.numbersHeight
+                );
+            }
         }
     }
 }
