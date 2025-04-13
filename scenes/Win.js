@@ -1,7 +1,7 @@
-import ButtonBack from "../game-objects/ButtonBack";
-import Frame from "../lib/Frame";
-import Picture from "../lib/Picture";
-import Scene from "../lib/Scene";
+import ButtonBack from "../game-objects/ButtonBack.js";
+import Frame from "../lib/Frame.js";
+import Picture from "../lib/Picture.js";
+import Scene from "../lib/Scene.js";
 
 export default class Win extends Scene {
     create() {

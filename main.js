@@ -1,5 +1,5 @@
-import Memoji from "./Memoji";
-import Loading from "./scenes/Loading";
+import Memoji from "./Memoji.js";
+import Loading from "./scenes/Loading.js";
 
 const play = document.createElement("button");
 play.textContent = "Mainkan Memoji";

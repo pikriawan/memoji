@@ -1,4 +1,4 @@
-import GameObject from "../lib/GameObject";
+import GameObject from "../lib/GameObject.js";
 
 export default class Loader extends GameObject {
     constructor(scene, x, y) {

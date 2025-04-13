@@ -1,5 +1,5 @@
-import Frame from "../lib/Frame";
-import GameObject from "../lib/GameObject";
+import Frame from "../lib/Frame.js";
+import GameObject from "../lib/GameObject.js";
 
 export default class MoveCounter extends GameObject {
     constructor(scene, counter, x, y) {

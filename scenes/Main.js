@@ -1,11 +1,11 @@
-import Card from "../game-objects/Card";
-import MoveCounter from "../game-objects/MoveCounter";
-import Frame from "../lib/Frame";
-import Picture from "../lib/Picture";
-import Scene from "../lib/Scene";
-import Lose from "./Lose";
-import Menu from "./Menu";
-import Win from "./Win";
+import Card from "../game-objects/Card.js";
+import MoveCounter from "../game-objects/MoveCounter.js";
+import Frame from "../lib/Frame.js";
+import Picture from "../lib/Picture.js";
+import Scene from "../lib/Scene.js";
+import Lose from "./Lose.js";
+import Menu from "./Menu.js";
+import Win from "./Win.js";
 
 export default class Main extends Scene {
     static DIFFICULTY_EASY = 0;

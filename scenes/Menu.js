@@ -1,9 +1,9 @@
-import ButtonEasy from "../game-objects/ButtonEasy";
-import ButtonHard from "../game-objects/ButtonHard";
-import ButtonMedium from "../game-objects/ButtonMedium";
-import Frame from "../lib/Frame";
-import Picture from "../lib/Picture";
-import Scene from "../lib/Scene";
+import ButtonEasy from "../game-objects/ButtonEasy.js";
+import ButtonHard from "../game-objects/ButtonHard.js";
+import ButtonMedium from "../game-objects/ButtonMedium.js";
+import Frame from "../lib/Frame.js";
+import Picture from "../lib/Picture.js";
+import Scene from "../lib/Scene.js";
 
 export default class Menu extends Scene {
     create() {

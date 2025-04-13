@@ -1,6 +1,6 @@
-import Frame from "../lib/Frame";
-import Sprite from "../lib/Sprite";
-import Main from "../scenes/Main";
+import Frame from "../lib/Frame.js";
+import Sprite from "../lib/Sprite.js";
+import Main from "../scenes/Main.js";
 
 export default class ButtonEasy extends Sprite {
     constructor(scene, x, y) {

@@ -1,5 +1,5 @@
-import Frame from "../lib/Frame";
-import Sprite from "../lib/Sprite";
+import Frame from "../lib/Frame.js";
+import Sprite from "../lib/Sprite.js";
 
 export default class Card extends Sprite {
     constructor(scene, imageKey, x, y, width, height) {

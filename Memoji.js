@@ -1,4 +1,4 @@
-import Game from "./lib/Game";
+import Game from "./lib/Game.js";
 
 export default class Memoji extends Game {
     preload() {

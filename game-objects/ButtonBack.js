@@ -1,6 +1,6 @@
-import Frame from "../lib/Frame";
-import Sprite from "../lib/Sprite";
-import Menu from "../scenes/Menu";
+import Frame from "../lib/Frame.js";
+import Sprite from "../lib/Sprite.js";
+import Menu from "../scenes/Menu.js";
 
 export default class ButtonBack extends Sprite {
     constructor(scene, x, y) {

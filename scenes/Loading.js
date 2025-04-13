@@ -1,6 +1,6 @@
-import Loader from "../game-objects/Loader";
-import Scene from "../lib/Scene";
-import Menu from "./Menu";
+import Loader from "../game-objects/Loader.js";
+import Scene from "../lib/Scene.js";
+import Menu from "./Menu.js";
 
 export default class Loading extends Scene {
     preload() {
