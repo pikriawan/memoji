@@ -19,8 +19,8 @@ export default class Main extends Scene {
         super(game);
 
         this.difficulty = difficulty;
-        this.cardWidth = 60;
-        this.cardHeight = 90;
+        this.cardWidth = 40;
+        this.cardHeight = 60;
         this.redirectDelay = 60;
         this.redirectCounter = 0;
         this.isRedirecting = false;
