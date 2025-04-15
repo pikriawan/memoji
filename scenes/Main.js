@@ -112,6 +112,7 @@ export default class Main extends Scene {
     decreaseMove() {
         this.move--;
         this.moveCounter.decrease();
+        this.moveCounter.x = (this.game.width - this.moveCounter.width) * 0.5;
     }
 
     shuffle(array) {
