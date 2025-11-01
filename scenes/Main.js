@@ -39,17 +39,17 @@ export default class Main extends Scene {
             case Main.DIFFICULTY_EASY:
                 this.row = 3;
                 this.column = 4;
-                this.move = 16;
+                this.move = 18;
                 break;
             case Main.DIFFICULTY_MEDIUM:
                 this.row = 4;
                 this.column = 6;
-                this.move = 20;
+                this.move = 36;
                 break;
             case Main.DIFFICULTY_HARD:
                 this.row = 6;
                 this.column = 6;
-                this.move = 48;
+                this.move = 54;
                 break;
         }
 
