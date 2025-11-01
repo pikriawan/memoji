@@ -37,18 +37,18 @@ export default class Main extends Scene {
     create() {
         switch (this.difficulty) {
             case Main.DIFFICULTY_EASY:
-                this.row = 2;
+                this.row = 3;
                 this.column = 4;
                 this.move = 16;
                 break;
             case Main.DIFFICULTY_MEDIUM:
-                this.row = 2;
-                this.column = 5;
+                this.row = 4;
+                this.column = 6;
                 this.move = 20;
                 break;
             case Main.DIFFICULTY_HARD:
-                this.row = 3;
-                this.column = 8;
+                this.row = 6;
+                this.column = 6;
                 this.move = 48;
                 break;
         }
