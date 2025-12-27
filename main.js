@@ -31,7 +31,6 @@ window.addEventListener("fullscreenchange", () => {
         game.canvas.style.display = "none";
         game.pause();
 
-
         startButton.textContent = "Lanjutkan permainan";
     }
 });
