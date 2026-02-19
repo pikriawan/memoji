@@ -36,7 +36,7 @@ export default class ButtonEasy extends Sprite {
     }
 
     onClick() {
-        this.scene.game.playSound("click");
+        this.scene.playSound("click");
         this.scene.game.setScene(new Main(this.scene.game, Main.DIFFICULTY_EASY));
     }
 }

@@ -100,10 +100,10 @@ export default class Main extends Scene {
         
         if (this.redirectCounter === this.redirectDelay) {
             if (this.status == Main.STATUS_LOSE) {
-                this.game.playSound("lose");
+                this.playSound("lose");
                 this.game.setScene(new Lose(this.game));
             } else {
-                this.game.playSound("win");
+                this.playSound("win");
                 this.game.setScene(new Win(this.game));
             }
         }

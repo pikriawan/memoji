@@ -36,7 +36,7 @@ export default class ButtonBack extends Sprite {
     }
 
     onClick() {
-        this.scene.game.playSound("click");
+        this.scene.playSound("click");
         this.scene.game.setScene(new Menu(this.scene.game));
     }
 }

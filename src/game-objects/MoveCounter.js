@@ -47,11 +47,11 @@ export default class MoveCounter extends GameObject {
     }
 
     draw() {
-        const arrowsImage = this.scene.game.assets.get(this.arrowsFrame.imageKey);
+        const arrowsImage = this.scene.game.images.get(this.arrowsFrame.imageKey);
 
-        if (arrowsImage instanceof Image) {
+        if (arrowsImage.asset instanceof Image) {
             this.scene.game.context.drawImage(
-                arrowsImage,
+                arrowsImage.asset,
                 this.arrowsFrame.x,
                 this.arrowsFrame.y,
                 this.arrowsFrame.width,
@@ -64,11 +64,11 @@ export default class MoveCounter extends GameObject {
         }
 
         for (let i = 0; i < this.numberFrames.length; i++) {
-            const numbersImage = this.scene.game.assets.get(this.numberFrames[i].imageKey);
+            const numbersImage = this.scene.game.images.get(this.numberFrames[i].imageKey);
 
-            if (arrowsImage instanceof Image) {
+            if (arrowsImage.asset instanceof Image) {
                 this.scene.game.context.drawImage(
-                    numbersImage,
+                    numbersImage.asset,
                     this.numberFrames[i].x,
                     this.numberFrames[i].y,
                     this.numberFrames[i].width,

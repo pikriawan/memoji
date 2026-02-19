@@ -38,11 +38,11 @@ export default class Sprite extends GameObject {
     }
 
     draw() {
-        const image = this.scene.game.assets.get(this.frame.imageKey);
+        const image = this.scene.game.images.get(this.frame.imageKey);
 
-        if (image instanceof Image) {
+        if (image.asset instanceof Image) {
             this.scene.game.context.drawImage(
-                image,
+                image.asset,
                 this.frame.x,
                 this.frame.y,
                 this.frame.width,

@@ -8,7 +8,7 @@ export default class Loader extends GameObject {
     }
 
     update() {
-        this.progress = this.scene.game.assetsLoaded / this.scene.game.assets.size;
+        this.progress = this.scene.game.getAssetsLoaded() / this.scene.game.getAssetsSize();
     }
 
     draw() {

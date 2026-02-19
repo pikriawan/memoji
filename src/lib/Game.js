@@ -19,9 +19,8 @@ export default class Game {
         this.context = this.canvas.getContext("2d");
         this.context.scale(devicePixelRatio, devicePixelRatio);
 
-        this.assets = new Map();
-        this.assetsLoaded = 0;
-        this.isAllAssetsLoaded = false;
+        this.images = new Map();
+        this.sounds = new Map();
 
         this.isPaused = false;
 
@@ -31,12 +30,6 @@ export default class Game {
         this.currentTime = null;
 
         requestAnimationFrame(this.animate.bind(this));
-
-        if (this.preload) {
-            this.preload();
-        }
-
-        this.addAssetsLoadListener();
     }
 
     animate(timestamp) {
@@ -65,7 +58,7 @@ export default class Game {
         this.context.clearRect(0, 0, this.width, this.height);
 
         if (this.scene) {
-            if (this.isAllAssetsLoaded && !this.scene.isCreated && this.scene.create) {
+            if (this.getIsAllAssetsLoaded() && !this.scene.isCreated && this.scene.create) {
                 this.scene.isCreated = true;
                 this.scene.create();
             }
@@ -78,24 +71,18 @@ export default class Game {
         }
     }
 
-    addAssetsLoadListener() {
-        for (const asset of this.assets.values()) {
-            let event = "";
+    getAssetsLoaded() {
+        const assets = [...this.images.values(), ...this.sounds.values()];
+        return assets.filter((asset) => asset.isLoaded).length;
+    }
 
-            if (asset instanceof Image) {
-                event = "load";
-            } else if (asset instanceof Audio) {
-                event = "canplaythrough";
-            }
+    getAssetsSize() {
+        const assets = new Map([...this.images, ...this.sounds]);
+        return assets.size;
+    }
 
-            asset.addEventListener(event, () => {
-                this.assetsLoaded++;
-
-                if (this.assetsLoaded == this.assets.size) {
-                    this.isAllAssetsLoaded = true;
-                }
-            });
-        }
+    getIsAllAssetsLoaded() {
+        return this.getAssetsLoaded() === this.getAssetsSize();
     }
 
     resume() {
@@ -107,17 +94,6 @@ export default class Game {
         this.isPaused = true;
     }
 
-    loadImage(key, src) {
-        const image = new Image();
-        image.src = src;
-        this.assets.set(key, image);
-    }
-
-    loadSound(key, src) {
-        const sound = new Audio(src);
-        this.assets.set(key, sound);
-    }
-
     setScene(scene) {
         if (this.scene) {
             this.scene.destroy();
@@ -127,15 +103,6 @@ export default class Game {
 
         if (this.scene.preload) {
             this.scene.preload();
-        }
-    }
-
-    playSound(soundKey) {
-        let sound = this.assets.get(soundKey);
-
-        if (sound instanceof Audio) {
-            sound = new Audio(sound.src);
-            sound.play();
         }
     }
 }

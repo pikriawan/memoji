@@ -65,7 +65,7 @@ export default class Card extends Sprite {
     open() {
         this.isOpen = true;
         this.play("open");
-        this.scene.game.playSound("flip");
+        this.scene.playSound("flip");
     }
 
     close() {
